@@ -22,7 +22,15 @@ const Product = () => {
 
                 return(
                     <div>
-                        <h2>{e.id}</h2>
+                        <h2 style={{color:"red"}}>{e.id}</h2> 
+                        <h2>{e.products.map((item)=>{
+                            return (
+                                <>
+                                <p>{item.productId}</p>
+                                <p>{item.quantity}</p>
+                                </>
+                            )
+                        })}</h2>
                     </div>    
                 )
             })}
