@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, {useEffect, useState} from "react";
 
 const Product = () => {
@@ -5,19 +6,13 @@ const Product = () => {
     const [state, setState] = useState([])
 
     useEffect(()=>{
+        console.log(state)
+         axios.get("https://fakestoreapi.com/carts").then((res)=> setState(res.data))    
 
-        const getData = async ()=>{
-            const res = await fetch("https://fakestoreapi.com/carts");
-            const data = await res.json();
-            setState(data);
-        }
-        getData();
-
-    },[])
-
+    },[state])
     return (
         <div>
-            <h1>Product</h1>
+            {/* <h1>Product</h1> */}
             {state.map((e)=>{
 
                 return(
@@ -26,8 +21,8 @@ const Product = () => {
                         <h2>{e.products.map((item)=>{
                             return (
                                 <>
-                                <p>{item.productId}</p>
-                                <p>{item.quantity}</p>
+                                {/* <p>{item.productId}</p> */}
+                                {/* <p>{item.quantity}</p> */}
                                 </>
                             )
                         })}</h2>
